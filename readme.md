@@ -11,7 +11,7 @@ It works in Firefox, Chrome, Safari, Opera and Internet Explorer 8+ and it has n
 
 ## Demo and Documentation
 
-http://goodies.pixabay.com/javascript/demo.html
+http://goodies.pixabay.com/javascript/pixabay-widget/demo.html
 
 ## Features
 
