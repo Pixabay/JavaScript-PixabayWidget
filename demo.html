@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pixabay Image Gallery - JavaScript Widget</title>
+    <meta name="description" content="A JavaScript widget for inserting Pixabay image galleries with ease into any website.">
+    <link rel="shortcut icon" href="//pixabay.com/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <style>
+        body { margin: 0; padding: 0; border: 0; min-width: 320px; color: #777; }
+        html, button, input, select, textarea, .pure-g [class *= "pure-u"] { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.02em; }
+        p, td { line-height: 1.5; }
+        ul { padding: 0 0 0 20px; }
+
+        th { background: #eee; white-space: nowrap; }
+        th, td { padding: 10px; text-align: left; vertical-align: top; font-size: .9em; font-weight: normal; border-right: 1px solid #fff; }
+        td:first-child { white-space: nowrap; color: #008000; width: 1%; font-style: italic; }
+        td:nth-child(2) { white-space: nowrap; }
+
+        h1, h2, h3 { color: #4b4b4b; font-family: "Source Sans Pro", sans-serif; font-weight: 300; margin: 0 0 1.2em; }
+        h1 { font-size: 4.5em; color: #1f8dd6; margin: 0 0 .4em; }
+        h2 { font-size: 2em; color: #636363; }
+        h3 { font-size: 1.8em; color: #4b4b4b; margin: 1.6em 0 .8em }
+        h4 { font: bold 1em sans-serif; color: #636363; margin: 4em 0 1em; }
+        a { color: #4e99c7; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        p, pre { margin: 0 0 1.2em; }
+        ::selection { color: #fff; background: #328efd; }
+        ::-moz-selection { color: #fff; background: #328efd; }
+
+        @media (max-width:640px) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            td:first-child { white-space: normal; }
+        }
+
+        .inline-code { padding: 1px 5px; background: #eee; border-radius: 2px; }
+        pre { padding: 15px 10px; font-size: .9em; color: #555; background: #edf3f8; }
+        pre i { color: #aaa; } /* comments */
+        pre b { font-weight: normal; color: #cf4b25; } /* strings */
+        pre em { color: #0c59e9; } /* numeric */
+
+        /* Pure CSS */
+        .pure-button { margin: 5px 0; text-decoration: none !important; }
+    </style>
+    <link rel="stylesheet" href="jquery.flex-images.css">
+</head>
+<body>
+    <div style="max-width:900px;padding:0 10px;margin:40px auto;text-align:center">
+        <h1>Pixabay Image Gallery</h1>
+        <h2>A free JavaScript widget for inserting Pixabay image galleries with ease into any website or blog.</h2>
+    </div>
+
+    <div style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#f7f7f7;margin:30px 0;padding:20px 5px">
+        <div style="padding :0 7px 0 5px;max-width:904px;margin:auto">
+            <div class="pixabay_widget" data-imageType="photo" data-rowHeight="150" data-maxRows="2" data-truncate="true" data-editorsChoice="true" data-navpos="false"></div>
+        </div>
+    </div>
+
+    <div style="max-width:900px;margin:auto;padding:0 10px 50px">
+        <p>
+            This widget may be used without charge for any application - also commercial and without giving credits.
+            The image galleries are easily customizable and they are responsive by default. The images themselves are in the <a href="http://pixabay.com/service/terms/#download_terms" target="_blank">Public Domain (CC0)</a>.
+        </p>
+        <p>
+            The widget's code is released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a> as free Open Source on <a href="https://github.com/Pixabay/JavaScript-PixabayWidget">Github</a>.
+            It works in Firefox, Chrome, Safari, Opera and Internet Explorer 8+ and it has no dependencies (plain JavaScript).
+        </p>
+
+        <p>
+            <a href="https://github.com/Pixabay/JavaScript-PixabayWidget/archive/master.zip" class="pure-button pure-button-primary" target="_blank">Download</a>
+            <a href="https://github.com/Pixabay/JavaScript-PixabayWidget" class="pure-button" target="_blank">View on GitHub</a>
+        </p>
+
+        <h3>How to use</h3>
+        <p>
+            First, include the JavaScript anywhere on the page, but preferably before the closing <span class="inline-code">&lt;/body&gt;</span> tag.
+        </p>
+        <pre>&lt;script <em>src</em>=<b>&quot;http://goodies.pixabay.com/javascript/pixabay-widget/pixabay-widget.min.js&quot;</b> <em>async defer</em>&gt;&lt;/script&gt;</pre>
+
+        <p>
+            The script automatically detects all widget containers and renders the image galleries. A widget container looks like this:
+        </p>
+        <pre>&lt;div <em>class</em>=<b>&quot;pixabay_widget&quot;</b> <em>data-search</em>=<b>&quot;africa animals&quot;</b> <em>data-maxRows</em>=<b>&quot;3&quot;</b>&gt;&lt;/div&gt;</pre>
+
+        <p>
+            The resulting widget shows a set of popular Pixabay images, matching the term "africa animals", and including navigation buttons with branding:
+        </p>
+        <div style="margin:0 0 25px" class="pixabay_widget" data-search="africa animals" data-maxRows="3"></div>
+
+        <p>
+            The attribute <span class="inline-code">data-search</span> tells the widget what images to search for. When omitting this parameter, all Pixabay images are listed.
+            <span class="inline-code">data-maxRows</span> limits the widget to a maximum of three rows of images.
+            The following table lists all available data-* settings:
+        </p>
+
+        <h3>HTML5 data attribute settings</h3>
+        <table>
+            <tr><th>Attribute</th><th>Default</th><th>Description</th></tr>
+            <tr><td>data-search</td><td>''</td><td>A string to search for. Maximum length: 100 characters. Omit to get all images.</td></tr>
+            <tr><td>data-user</td><td>''</td><td>A Pixabay username to limit search results to.</td></tr>
+            <tr><td>data-imageType</td><td>'all'</td><td>A media type to search within. Accepted values: "all", "photo", "illustration", "vector".</td></tr>
+            <tr><td>data-safesearch</td><td><i>false</i></td><td>A flag indicating that only images suitable for all ages should be returned. Accepted values: "true", "false".</td></tr>
+            <tr><td>data-editorsChoice</td><td><i>false</i></td><td>Select images that have received an <a href="http://pixabay.com/editors_choice/" target="_blank">Editor's Choice</a> award. Accepted values: "true", "false".</td></tr>
+            <tr><td>data-order</td><td>'popular'</td><td>How the results should be ordered. Accepted values: "popular", "latest".</td></tr>
+            <tr><td>data-page</td><td>1</td><td>Returned image sets are paginated. Use this parameter to select the page number.</td></tr>
+            <tr><td>data-perPage</td><td>25</td><td>Maximum number of images per next/prev page. Values: 3-100.</td></tr>
+
+            <tr><td>data-rowHeight</td><td>100</td><td>Maximum height of a row in pixels.</td></tr>
+            <tr><td>data-maxRows</td><td>-</td><td>Maximum number of rows to display. Images exceeding this row are hidden.</td></tr>
+            <tr><td>data-truncate</td><td><i>false</i></td><td>Hide <i>incomplete</i> last row of images.</td></tr>
+
+            <tr><td>data-target</td><td>-</td><td>Link target for images, e.g. "_blank."</td></tr>
+            <tr><td>data-navpos</td><td>'bottom'</td><td>Position of navigation buttons and branding. Leave empty to hide both. Accepted values: "bottom", "top".</td></tr>
+            <tr><td>data-branding</td><td><i>true</i></td><td>Whether to show "Powered by Pixabay". Accepted values: "true", "false".</td></tr>
+            <tr><td>data-prev</td><td>'◄ PREV&nbsp;'</td><td>Text for the previous button. Leave empty to hide pagination controls.</td></tr>
+            <tr><td>data-next</td><td>'&nbsp; NEXT ►'</td><td>Text for the next button. Leave empty to hide pagination controls.</td></tr>
+        </table>
+
+        <h3>Example</h3>
+        <p>
+            A widget showing the most popular images by <a href="http://pixabay.com/users/stevepb-282134/" target="_blank">stevepb</a> - only one row of large images, navigation on top and no branding:
+        </p>
+        <pre>&lt;div <em>class</em>=<b>&quot;pixabay_widget&quot;</b> <em>data-user</em>=<b>&quot;stevepb&quot;</b> <em>data-maxRows</em>=<b>&quot;1&quot;</b> <em>data-rowHeight</em>=<b>&quot;180&quot;</b> <em>data-branding</em>=<b>&quot;false&quot;</b> <em>data-navpos</em>=<b>&quot;top&quot;</b>&gt;&lt;/div&gt;</pre>
+        <p>
+            And that's how the gallery looks like:
+        </p>
+        <div class="pixabay_widget" data-maxRows="1" data-user="stevepb" data-perPage="4" data-rowHeight="180" data-navpos="top" data-branding="false"></div>
+
+        <h3>Changing the default settings and the widget class name</h3>
+        <p>Data attributes are used to configure individual widgets. As an alternative, it's also possible to modify the default settings. This is done by defining a global JavaScript object "pixabayWidget" <b>before</b> loading the widget script. These are the available parameters:</p>
+        <pre>&lt;script&gt;
+    <em>var</em> pixabayWidget = {
+        <em>className</em>: <b>'pixabay_widget'</b>, <i>// class name for detecting widgets on the page</i>
+        <em>imageType</em>: <b>'all'</b>,
+        <em>safesearch</em>: false,
+        <em>editorsChoice</em>: false,
+        <em>order</em>: <b>'popular'</b>,
+        <em>perPage</em>: 25,
+        <em>rowHeight</em>: 100,
+        <em>maxRows</em>: false,
+        <em>truncate</em>: false,
+        <em>target</em>: <b>''</b>,
+        <em>navpos</em>: <b>'bottom'</b>,
+        <em>branding</em>: true,
+        <em>prev</em>: <b>'&#9668; PREV&amp;nbsp;'</b>,
+        <em>next</em>: <b>'&amp;nbsp; NEXT &#9658;'</b>
+    }
+&lt;/script&gt;</pre>
+
+        <h3>Updating widgets after DOM manipulations</h3>
+        <p>
+            New widgets may be added (e.g. via AJAX) and all attributes and settings may be modified at any time.
+            Use the <span class="inline-code">initPixabayWidget()</span> method to render all changes.
+        </p>
+        <pre>&lt;script&gt;
+    <em>new</em> initPixabayWidget();
+&lt;/script&gt;</pre>
+
+        <h3>Styles and layout</h3>
+        <p>
+            The widget comes with a default set of CSS rules, which is dynamically generated by the script. All CSS directives may be overwritten with custom styles.
+            Please take a look at the widget's <a href="https://github.com/Pixabay/JavaScript-PixabayWidget" target="_blank">JavaScript source code</a> to see the auto-generated CSS.
+        </p>
+
+        <h3>CDN source / Hosting the JavaScript code</h3>
+        <p>
+            If you like, you may download the script and host it on your own server(s).
+            Alternatively, use the script URL from Pixabay - as shown in the example above.
+            Or you can make use of <a href="https://rawgit.com/" target="_blank">RawGit</a> to access the GitHub's repository via CDN (MaxCDN):
+        </p>
+        <pre>&lt;script <em>src</em>=<b>&quot;https://cdn.rawgit.com/Pixabay/JavaScript-PixabayWidget/master/pixabay-widget.min.js&quot;</b> <em>async defer</em>&gt;&lt;/script&gt;</pre>
+
+
+        <div style="margin:40px 0;overflow:hidden">
+            <span id="github_social"></span>
+            <div style="float:left;margin-right:5px">
+                <a href="#" data-width="70" class="twitter-share-button" data-text="Pixabay Image Gallery - JavaScript Widget"></a>
+            </div>
+            <div style="float:left">
+                <div class="g-plusone" data-size="medium"></div>
+            </div>
+            <div style="float:left;width:140px" class="fb-like" data-send="false" data-layout="button_count" data-width="140" data-show-faces="false"></div>
+        </div>
+
+        <p>This software is released as Open Source under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a> by <a href="http://pixabay.com/users/Simon/">Simon Steinberger / Pixabay.com</a>.</p>
+    </div>
+
+    <div style="background:#fafafa;border-top:1px solid #eee;padding:15px;font-size:.9em">
+        <div style="max-width:900px;margin:auto;padding:0 10px">
+            <a style="float:right;margin-left:20px" href="http://pixabay.com/en/service/about/">About Us</a>
+            <a style="float:right;margin-left:20px" href="http://pixabay.com/en/blog/">Blog</a>
+            <a style="float:right;margin-left:20px" href="http://goodies.pixabay.com/">More Goodies</a>
+            © <a href="http://pixabay.com/">Pixabay.com</a> / Simon Steinberger / Hans Braxmeier
+        </div>
+    </div>
+
+    <script>var pixabayWidget = { target: '_blank' };</script>
+    <script src="pixabay-widget.min.js" async defer></script>
+    <script>
+        if (~window.location.href.indexOf('http')) {
+            (function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
+            (function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=380275075435187&version=v2.0";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            $('#github_social').html('\
+                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=JavaScript-PixabayWidget&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
+                <iframe style="float:left;margin-right:15px" src="//ghbtns.com/github-btn.html?user=Pixabay&repo=JavaScript-PixabayWidget&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>\
+            ');
+        }
+    </script>
+</body>
+</html>
