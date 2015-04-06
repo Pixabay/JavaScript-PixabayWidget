@@ -18,7 +18,7 @@ http://goodies.pixabay.com/javascript/demo.html
 * Lightweight: 6.8 kB of JavaScript - less than 3 kB gzipped
 * Easily customizable
 * Responsive layout
-* All images are free
+* All images are free even for commercial applications and without attribution requirement (CC0)
 
 ## Changelog
 
