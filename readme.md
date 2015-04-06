@@ -1,4 +1,4 @@
-JavaScript-PixabayWidget
+Pixabay Widget - JavaScript
 ===================
 
 A JavaScript widget for inserting Pixabay image galleries with ease into any website.
