@@ -74,6 +74,7 @@
             br = n.getAttribute('data-branding')||o.branding,
             navpos = n.getAttribute('data-navpos')||o.navpos;
 
+        if (rh < 30 || rh > 180) rh = 170;
         if (tr == 'false') tr = 0; else if (tr == 'true') tr = 1;
         if (br == 'false') br = 0; else if (br == 'true') br = 1;
 
