@@ -72,6 +72,8 @@
             tr = n.getAttribute('data-truncate')||o.truncate,
             target = n.getAttribute('data-target')||o.target,
             br = n.getAttribute('data-branding')||o.branding,
+            prev = n.getAttribute('data-prev')||o.prev,
+            next = n.getAttribute('data-next')||o.next,
             navpos = n.getAttribute('data-navpos')||o.navpos;
 
         if (rh < 30 || rh > 180) rh = 170;
@@ -79,15 +81,15 @@
         if (br == 'false') br = 0; else if (br == 'true') br = 1;
 
         // pagination and branding
-        var is_paginated = data.totalHits > per_page && o.prev && o.next;
+        var is_paginated = data.totalHits > per_page && prev && next;
         if (is_paginated || br) {
             nav += '<div class="noselect '+o.class_name+'_nav">';
             if (br) nav += '<div class="branding">Powered by <a href="http://pixabay.com/" target="'+target+'">Pixabay</a></div>';
             if (is_paginated) {
-                if (page > 1) nav += '<b class="'+o.class_name+'_prev">'+o.prev+'&nbsp;</b>';
-                else nav += '<span>'+o.prev+'&nbsp;</span>';
-                if (page*per_page < data.totalHits) nav += '<b class="'+o.class_name+'_next">&nbsp; '+o.next+'</b>';
-                else nav += '<span>&nbsp; '+o.next+'</span>';
+                if (page > 1) nav += '<b class="'+o.class_name+'_prev">'+prev+'&nbsp;</b>';
+                else nav += '<span>'+prev+'&nbsp;</span>';
+                if (page*per_page < data.totalHits) nav += '<b class="'+o.class_name+'_next">&nbsp; '+next+'</b>';
+                else nav += '<span>&nbsp; '+next+'</span>';
             }
             nav += '</div>';
         }
