@@ -18,7 +18,7 @@
         rowHeight: 100,
         perPage: 25,
         maxRows: 0,
-        truncate: false,
+        truncate: true,
         imageType: 'all', // 'photo', 'illustration'
         safesearch: false,
         editorsChoice: false,
