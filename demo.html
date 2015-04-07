@@ -54,7 +54,7 @@
 
     <div style="border-top: 1px solid #eee;border-bottom:1px solid #eee;background:#f7f7f7;margin:30px 0;padding:20px 5px">
         <div style="padding :0 7px 0 5px;max-width:902px;margin:auto">
-            <div class="pixabay_widget" data-imageType="photo" data-rowHeight="150" data-maxRows="2" data-truncate="true" data-editorsChoice="true" data-navpos="false"></div>
+            <div class="pixabay_widget" data-image-type="photo" data-row-height="150" data-max-rows="2" data-truncate="true" data-editors-choice="true" data-navpos="false"></div>
         </div>
     </div>
 
@@ -82,16 +82,16 @@
         <p>
             The script automatically detects all widget containers and renders the image galleries. A widget container looks like this:
         </p>
-        <pre>&lt;div <em>class</em>=<b>&quot;pixabay_widget&quot;</b> <em>data-search</em>=<b>&quot;africa animals&quot;</b> <em>data-maxRows</em>=<b>&quot;3&quot;</b>&gt;&lt;/div&gt;</pre>
+        <pre>&lt;div <em>class</em>=<b>&quot;pixabay_widget&quot;</b> <em>data-search</em>=<b>&quot;africa animals&quot;</b> <em>data-max-rows</em>=<b>&quot;3&quot;</b>&gt;&lt;/div&gt;</pre>
 
         <p>
             The resulting widget shows a set of popular Pixabay images, matching the term "africa animals", and including navigation buttons with branding:
         </p>
-        <div style="margin:0 0 25px" class="pixabay_widget" data-search="africa animals" data-maxRows="3"></div>
+        <div style="margin:0 0 25px" class="pixabay_widget" data-search="africa animals" data-max-rows="3" data-row-height="120"></div>
 
         <p>
             The attribute <span class="inline-code">data-search</span> tells the widget what images to search for. When omitting this parameter, all Pixabay images are listed.
-            <span class="inline-code">data-maxRows</span> limits the widget to a maximum of three rows of images.
+            <span class="inline-code">data-max-rows</span> limits the widget to a maximum of three rows of images.
             The following table lists all available data-* settings:
         </p>
 
@@ -101,15 +101,15 @@
             <tr><td>data-search</td><td>''</td><td>A string to search for. Maximum length: 100 characters. Omit to get all images.</td></tr>
             <tr><td>data-user</td><td>''</td><td>A Pixabay username to limit search results to.</td></tr>
             <tr><td>data-lang</td><td>'en'</td><td>The language to search in. Accepted values: 'bg', 'cs', 'da', 'de', 'el', 'en', 'es', 'fi', 'fr', 'hu', 'id', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sv', 'th', 'tr', 'vi', 'zh'</td></tr>
-            <tr><td>data-imageType</td><td>'all'</td><td>A media type to search within. Accepted values: "all", "photo", "illustration", "vector".</td></tr>
+            <tr><td>data-image-type</td><td>'all'</td><td>A media type to search within. Accepted values: "all", "photo", "illustration", "vector".</td></tr>
             <tr><td>data-safesearch</td><td><i>false</i></td><td>A flag indicating that only images suitable for all ages should be returned. Accepted values: "true", "false".</td></tr>
-            <tr><td>data-editorsChoice</td><td><i>false</i></td><td>Select images that have received an <a href="http://pixabay.com/editors_choice/">Editor's Choice</a> award. Accepted values: "true", "false".</td></tr>
+            <tr><td>data-editors-choice</td><td><i>false</i></td><td>Select images that have received an <a href="http://pixabay.com/editors_choice/">Editor's Choice</a> award. Accepted values: "true", "false".</td></tr>
             <tr><td>data-order</td><td>'popular'</td><td>How the results should be ordered. Accepted values: "popular", "latest".</td></tr>
             <tr><td>data-page</td><td>1</td><td>Returned image sets are paginated. Use this parameter to select the page number.</td></tr>
-            <tr><td>data-perPage</td><td>25</td><td>Maximum number of images per next/prev page. Values: 3-100.</td></tr>
+            <tr><td>data-per-page</td><td>25</td><td>Maximum number of images per next/prev page. Values: 3-100.</td></tr>
 
-            <tr><td>data-rowHeight</td><td>100</td><td>Maximum height of a row in pixels.</td></tr>
-            <tr><td>data-maxRows</td><td>-</td><td>Maximum number of rows to display. Images exceeding this row are hidden.</td></tr>
+            <tr><td>data-row-height</td><td>100</td><td>Maximum height of a row in pixels.</td></tr>
+            <tr><td>data-max-rows</td><td>-</td><td>Maximum number of rows to display. Images exceeding this row are hidden.</td></tr>
             <tr><td>data-truncate</td><td><i>false</i></td><td>Hide <i>incomplete</i> last row of images.</td></tr>
 
             <tr><td>data-target</td><td>-</td><td>Link target for images, e.g. "_blank."</td></tr>
@@ -123,25 +123,25 @@
         <p>
             A widget showing the most popular images by <a href="http://pixabay.com/users/stevepb-282134/">stevepb</a> - only one row of large images, navigation on top and no branding:
         </p>
-        <pre>&lt;div <em>class</em>=<b>&quot;pixabay_widget&quot;</b> <em>data-user</em>=<b>&quot;stevepb&quot;</b> <em>data-maxRows</em>=<b>&quot;1&quot;</b> <em>data-rowHeight</em>=<b>&quot;180&quot;</b> <em>data-branding</em>=<b>&quot;false&quot;</b> <em>data-navpos</em>=<b>&quot;top&quot;</b>&gt;&lt;/div&gt;</pre>
+        <pre>&lt;div <em>class</em>=<b>&quot;pixabay_widget&quot;</b> <em>data-user</em>=<b>&quot;stevepb&quot;</b> <em>data-max-rows</em>=<b>&quot;1&quot;</b> <em>data-row-height</em>=<b>&quot;180&quot;</b> <em>data-branding</em>=<b>&quot;false&quot;</b> <em>data-navpos</em>=<b>&quot;top&quot;</b>&gt;&lt;/div&gt;</pre>
         <p>
             And that's how the gallery looks like:
         </p>
-        <div class="pixabay_widget" data-maxRows="1" data-user="stevepb" data-perPage="4" data-rowHeight="180" data-navpos="top" data-branding="false"></div>
+        <div class="pixabay_widget" data-max-rows="1" data-user="stevepb" data-per-page="4" data-row-height="180" data-navpos="top" data-branding="false"></div>
 
         <h3>Changing the default settings and the widget class name</h3>
         <p>Data attributes are used to configure individual widgets. As an alternative, it's also possible to modify the default settings. This is done by defining a global JavaScript object "pixabayWidget" <b>before</b> loading the widget script. These are the available parameters:</p>
         <pre>&lt;script&gt;
     <em>var</em> pixabayWidget = {
-        <em>className</em>: <b>'pixabay_widget'</b>, <i>// class name for detecting widgets on the page</i>
+        <em>class_name</em>: <b>'pixabay_widget'</b>, <i>// class name for detecting widgets on the page</i>
         <em>lang</em>: <b>'en'</b>,
-        <em>imageType</em>: <b>'all'</b>,
+        <em>image_type</em>: <b>'all'</b>,
         <em>safesearch</em>: false,
-        <em>editorsChoice</em>: false,
+        <em>editors_choice</em>: false,
         <em>order</em>: <b>'popular'</b>,
-        <em>perPage</em>: 25,
-        <em>rowHeight</em>: 100,
-        <em>maxRows</em>: false,
+        <em>per_page</em>: 25,
+        <em>row_height</em>: 100,
+        <em>max_rows</em>: false,
         <em>truncate</em>: false,
         <em>target</em>: <b>''</b>,
         <em>navpos</em>: <b>'bottom'</b>,

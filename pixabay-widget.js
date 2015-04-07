@@ -6,7 +6,7 @@
 
     settings:
         // default values
-        var pixabayWidget = { className: '', ... };
+        var pixabayWidget = { class_name: '', ... };
     public methods:
         // reload widget(s) after DOM changes
         new initPixabayWidget();
@@ -14,15 +14,15 @@
 
 (function(){
     var cache = {}, counter = 0, o = {
-        className: 'pixabay_widget',
-        rowHeight: 170,
-        perPage: 20,
-        maxRows: 0,
+        class_name: 'pixabay_widget',
+        row_height: 170,
+        per_page: 20,
+        max_rows: 0,
         truncate: true,
         lang: 'en',
-        imageType: 'all', // 'photo', 'illustration'
+        image_type: 'all', // 'photo', 'illustration'
         safesearch: false,
-        editorsChoice: false,
+        editors_choice: false,
         order: 'popular', // 'latest'
         target: '', // '_blank'
         navpos: 'bottom', // position of branding and pagination: false, 'bottom', 'top'
@@ -45,7 +45,7 @@
         '**.flex_grid { overflow: hidden; }'+
         '**.flex_grid .item { float: left; margin: 1px; box-sizing: content-box; overflow: hidden; position: relative;  }'+
         '**.flex_grid .item img { display: block; width: auto; height: 100%; background: #fff; transition: .3s; }'+
-        '**.flex_grid .item img:hover { opacity: .85; }').replace(/\*\*/g, '.'+o.className);
+        '**.flex_grid .item img:hover { opacity: .85; }').replace(/\*\*/g, '.'+o.class_name);
     var el = document.createElement('style'); el.type = 'text/css';
     if (el.styleSheet) el.styleSheet.cssText = styles; //IE
     else el.appendChild(document.createTextNode(styles));
@@ -57,18 +57,18 @@
     function escapeHTML(s){return s?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';}
     function toTitleCase(s){ return s.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); }
 
-    function callback_name(f, node, page, perPage, url){
+    function callback_name(f, node, page, per_page, url){
         var fname = 'pxw_callback_'+counter;
-        window[fname] = function(data){ f(data, node, page, perPage, url); try { delete window[fname]; } catch(e){} };
+        window[fname] = function(data){ f(data, node, page, per_page, url); try { delete window[fname]; } catch(e){} };
         counter++;
         return fname;
     }
 
-    APIResponse = function(data, n, page, perPage, url){
+    APIResponse = function(data, n, page, per_page, url){
         cache[url] = data;
         var nav = '', html = '',
-            rh = parseInt(n.getAttribute('data-rowHeight')||o.rowHeight),
-            mr = n.getAttribute('data-maxRows')||o.maxRows,
+            rh = parseInt(n.getAttribute('data-row-height'))||o.row_height,
+            mr = parseInt(n.getAttribute('data-max-rows'))||o.max_rows,
             tr = n.getAttribute('data-truncate')||o.truncate,
             target = n.getAttribute('data-target')||o.target,
             br = n.getAttribute('data-branding')||o.branding,
@@ -78,14 +78,14 @@
         if (br == 'false') br = 0; else if (br == 'true') br = 1;
 
         // pagination and branding
-        var is_paginated = data.totalHits > perPage && o.prev && o.next;
+        var is_paginated = data.totalHits > per_page && o.prev && o.next;
         if (is_paginated || br) {
-            nav += '<div class="noselect '+o.className+'_nav">';
+            nav += '<div class="noselect '+o.class_name+'_nav">';
             if (br) nav += '<div class="branding">Powered by <a href="http://pixabay.com/" target="'+target+'">Pixabay</a></div>';
             if (is_paginated) {
-                if (page > 1) nav += '<b class="'+o.className+'_prev">'+o.prev+'&nbsp;</b>';
+                if (page > 1) nav += '<b class="'+o.class_name+'_prev">'+o.prev+'&nbsp;</b>';
                 else nav += '<span>'+o.prev+'&nbsp;</span>';
-                if (page*perPage < data.totalHits) nav += '<b class="'+o.className+'_next">&nbsp; '+o.next+'</b>';
+                if (page*per_page < data.totalHits) nav += '<b class="'+o.class_name+'_next">&nbsp; '+o.next+'</b>';
                 else nav += '<span>&nbsp; '+o.next+'</span>';
             }
             nav += '</div>';
@@ -102,7 +102,7 @@
 
         n.innerHTML = html;
         if (n.className.indexOf('flex_grid')<0) n.className += ' flex_grid';
-        new flexImages({selector: n, rowHeight: rh, maxRows: parseInt(mr), truncate: tr});
+        new flexImages({selector: n, rowHeight: rh, maxRows: mr, truncate: tr});
         n.setAttribute('data-attrstr', attrs_to_str(n));
     }
 
@@ -121,10 +121,10 @@
     if (document.addEventListener)
         document.addEventListener('click', function(e){
             var next = 0;
-            if (e.target.className==o.className+'_prev') next = -1;
-            else if (e.target.className==o.className+'_next') next = 1;
+            if (e.target.class_name==o.class_name+'_prev') next = -1;
+            else if (e.target.class_name==o.class_name+'_next') next = 1;
             if (next) {
-                var n = closest(e.target, '.'+o.className), p = (parseInt(n.getAttribute('data-page')) || 1)+next;
+                var n = closest(e.target, '.'+o.class_name), p = (parseInt(n.getAttribute('data-page')) || 1)+next;
                 if (p) { n.setAttribute('data-page', p); init(); }
                 e.preventDefault();
             }
@@ -133,19 +133,19 @@
         o.prev = '', o.next = '';
 
     function init(){
-        for (var i=0,widgets=document.querySelectorAll('.'+o.className);i<widgets.length;i++) {
+        for (var i=0,widgets=document.querySelectorAll('.'+o.class_name);i<widgets.length;i++) {
             var n = widgets[i];
             // skip rendered widgets if not changed
             if (attrs_to_str(n) != n.getAttribute('data-attrstr')) {
                 var page = (parseInt(n.getAttribute('data-page'))||1),
-                    perPage = (parseInt(n.getAttribute('data-perPage'))||o.perPage),
+                    per_page = (parseInt(n.getAttribute('data-per-page'))||o.per_page),
                     q = n.getAttribute('data-search')||'',
                     user = n.getAttribute('data-user')||'';
-                perPage = perPage > 100 ? 100 : perPage;
+                per_page = per_page > 100 ? 100 : per_page;
                 if (user) q = 'user:'+user+' '+q;
-                var url = 'http://pixabay.com/api/?username=PixabayWidget&key=2e318db2f775b21a12e5&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-imageType')||o.imageType)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editorsChoice')||o.editorsChoice)+'&per_page='+perPage+'&page='+page+'&q='+encodeURIComponent(q);
-                if (url in cache) APIResponse(cache[url], n, page, perPage, url);
-                else { var script = document.createElement('script'); script.src = url+'&callback='+callback_name(APIResponse, n, page, perPage, url); document.body.appendChild(script); }
+                var url = 'http://pixabay.com/api/?username=PixabayWidget&key=2e318db2f775b21a12e5&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-image-type')||o.image_type)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editors-choice')||o.editors_choice)+'&per_page='+per_page+'&page='+page+'&q='+encodeURIComponent(q);
+                if (url in cache) APIResponse(cache[url], n, page, per_page, url);
+                else { var script = document.createElement('script'); script.src = url+'&callback='+callback_name(APIResponse, n, page, per_page, url); document.body.appendChild(script); }
             }
         }
     }
