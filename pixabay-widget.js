@@ -15,8 +15,8 @@
 (function(){
     var cache = {}, counter = 0, o = {
         className: 'pixabay_widget',
-        rowHeight: 100,
-        perPage: 25,
+        rowHeight: 170,
+        perPage: 20,
         maxRows: 0,
         truncate: true,
         imageType: 'all', // 'photo', 'illustration'
