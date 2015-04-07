@@ -124,8 +124,8 @@
     if (document.addEventListener)
         document.addEventListener('click', function(e){
             var next = 0;
-            if (e.target.class_name==o.class_name+'_prev') next = -1;
-            else if (e.target.class_name==o.class_name+'_next') next = 1;
+            if (e.target.className==o.class_name+'_prev') next = -1;
+            else if (e.target.className==o.class_name+'_next') next = 1;
             if (next) {
                 var n = closest(e.target, '.'+o.class_name), p = (parseInt(n.getAttribute('data-page')) || 1)+next;
                 if (p) { n.setAttribute('data-page', p); init(); }
