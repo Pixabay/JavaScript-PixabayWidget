@@ -26,8 +26,8 @@
         target: '', // '_blank'
         navpos: 'bottom', // position of branding and pagination: false, 'bottom', 'top'
         branding: true,
-        prev: '◄ PREV&nbsp;',
-        next: '&nbsp; NEXT ►'
+        prev: '◄ PREV',
+        next: 'NEXT ►'
     }
     if (typeof pixabayWidget === 'object') {
         for (var k in pixabayWidget) { if (Object.prototype.hasOwnProperty.call(pixabayWidget, k)) o[k]=pixabayWidget[k]; }
@@ -82,10 +82,10 @@
             nav += '<div class="noselect '+o.className+'_nav">';
             if (br) nav += '<div class="branding">Powered by <a href="http://pixabay.com/" target="'+target+'">Pixabay</a></div>';
             if (is_paginated) {
-                if (page > 1) nav += '<b class="'+o.className+'_prev">'+o.prev+'</b>';
-                else nav += '<span>'+o.prev+'</span>';
-                if (page*perPage < data.totalHits) nav += '<b class="'+o.className+'_next">'+o.next+'</b>';
-                else nav += '<span>'+o.next+'</span>';
+                if (page > 1) nav += '<b class="'+o.className+'_prev">'+o.prev+'&nbsp;</b>';
+                else nav += '<span>'+o.prev+'&nbsp;</span>';
+                if (page*perPage < data.totalHits) nav += '<b class="'+o.className+'_next">&nbsp; '+o.next+'</b>';
+                else nav += '<span>&nbsp; '+o.next+'</span>';
             }
             nav += '</div>';
         }
