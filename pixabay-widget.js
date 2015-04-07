@@ -19,6 +19,7 @@
         perPage: 20,
         maxRows: 0,
         truncate: true,
+        lang: 'en',
         imageType: 'all', // 'photo', 'illustration'
         safesearch: false,
         editorsChoice: false,
@@ -142,7 +143,7 @@
                     user = n.getAttribute('data-user')||'';
                 perPage = perPage > 100 ? 100 : perPage;
                 if (user) q = 'user:'+user+' '+q;
-                var url = 'http://pixabay.com/api/?username=PixabayWidget&key=2e318db2f775b21a12e5&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-imageType')||o.imageType)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editorsChoice')||o.editorsChoice)+'&per_page='+perPage+'&page='+page+'&q='+encodeURIComponent(q);
+                var url = 'http://pixabay.com/api/?username=PixabayWidget&key=2e318db2f775b21a12e5&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-imageType')||o.imageType)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editorsChoice')||o.editorsChoice)+'&per_page='+perPage+'&page='+page+'&q='+encodeURIComponent(q);
                 if (url in cache) APIResponse(cache[url], n, page, perPage, url);
                 else { var script = document.createElement('script'); script.src = url+'&callback='+callback_name(APIResponse, n, page, perPage, url); document.body.appendChild(script); }
             }
