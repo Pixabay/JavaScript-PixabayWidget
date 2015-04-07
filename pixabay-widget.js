@@ -42,7 +42,7 @@
         '** **_nav span { color: #ddd; cursor: default; }'+
         '** .branding { float: right; }'+
         '**.flex_grid { overflow: hidden; }'+
-        '**.flex_grid .item { float: left; margin: 2px; border: 1px solid #eee; box-sizing: content-box; overflow: hidden; position: relative;  }'+
+        '**.flex_grid .item { float: left; margin: 1px; box-sizing: content-box; overflow: hidden; position: relative;  }'+
         '**.flex_grid .item img { display: block; width: auto; height: 100%; background: #fff; transition: .3s; }'+
         '**.flex_grid .item img:hover { opacity: .85; }').replace(/\*\*/g, '.'+o.className);
     var el = document.createElement('style'); el.type = 'text/css';
