@@ -52,7 +52,7 @@
     document.getElementsByTagName('head')[0].appendChild(el);
 
     // https://github.com/Pixabay/jQuery-flexImages
-    !function(){function e(e,t,r){var i=e.offsetWidth,n=window.getComputedStyle?getComputedStyle(e,null):e.currentStyle;return t?i+=(parseInt(n.marginLeft)||0)+(parseInt(n.marginRight)||0):r&&(i-=(parseInt(n.borderLeftWidth)||0)+(parseInt(n.borderRightWidth)||0)),i}function t(r,n,a,o){function s(e){a.maxRows&&u>a.maxRows||a.truncate&&e&&u>1?m[l][0].style.display="none":(m[l][5]&&(m[l][4].setAttribute("src",m[l][5]),m[l][5]=""),m[l][0].style.width=c+"px",m[l][0].style.height=d+"px",m[l][0].style.display="block")}var l,c,g=1,u=1,f=e(r,!1,!0),m=[],w=0,d=a.rowHeight;for(i=0;i<n.length;i++)if(m.push(n[i]),w+=n[i][3]+a.margin,w>=f){for(g=f/w,d=Math.ceil(a.rowHeight*g),exact_w=0,c,l=0;l<m.length;l++)c=Math.ceil(m[l][3]*g),exact_w+=c+a.margin,exact_w>f&&(c-=exact_w-f+1),s();m=[],w=0,u++}for(l=0;l<m.length;l++)c=Math.floor(m[l][3]*g),h=Math.floor(a.rowHeight*g),s(!0);o||f==e(r,!1,!0)||t(r,n,a,!0)}this.flexImages=function(){var r={selector:null,container:".item",object:"img",rowHeight:180,maxRows:0,truncate:0};if(arguments[0]&&"object"==typeof arguments[0])for(var n in arguments[0])Object.prototype.hasOwnProperty.call(arguments[0],n)&&(r[n]=arguments[0][n]);var a="object"==typeof r.selector?[r.selector]:document.querySelectorAll(r.selector);for(i=0;i<a.length;i++){var o=a[i],s=o.querySelectorAll(r.container),l=[],c=(new Date).getTime();for(r.margin=e(s[0],!0)-e(s[0],!1,!0),j=0;j<s.length;j++){var g=s[j],u=parseInt(g.getAttribute("data-w")),f=parseInt(g.getAttribute("data-h")),h=u*(r.rowHeight/f),m=g.querySelector(r.object);l.push([g,u,f,h,m,m.getAttribute("data-src")])}t(o,l,r),tempf=function(){t(o,l,r)},document.addEventListener?(window["flexImages_listener"+c]=tempf,window.removeEventListener("resize",window["flexImages_listener"+o.getAttribute("data-flex-t")]),window.addEventListener("resize",window["flexImages_listener"+c])):o.onresize=tempf,o.setAttribute("data-flex-t",c)}}}();
+    !function(){function e(e,t,r){var i=e.offsetWidth,n=window.getComputedStyle?getComputedStyle(e,null):e.currentStyle;return t?i+=(parseInt(n.marginLeft)||0)+(parseInt(n.marginRight)||0):r&&(i-=(parseInt(n.borderLeftWidth)||0)+(parseInt(n.borderRightWidth)||0)),i}function t(r,n,a,o){function l(e){a.maxRows&&f>a.maxRows||a.truncate&&e&&f>1?m[s][0].style.display="none":(m[s][5]&&(m[s][4].setAttribute("src",m[s][5]),m[s][5]=""),m[s][0].style.width=g+"px",m[s][0].style.height=d+"px",m[s][0].style.display="block")}var s,g,c=1,f=1,u=e(r,!1,!0),m=[],w=0,d=a.rowHeight;for(i=0;i<n.length;i++)if(m.push(n[i]),w+=n[i][3]+a.margin,w>=u){for(c=u/w,d=Math.ceil(a.rowHeight*c),exact_w=0,g,s=0;s<m.length;s++)g=Math.ceil(m[s][3]*c),exact_w+=g+a.margin,exact_w>u&&(g-=exact_w-u+1),l();m=[],w=0,f++}for(s=0;s<m.length;s++)g=Math.floor(m[s][3]*c),h=Math.floor(a.rowHeight*c),l(!0);o||u==e(r,!1,!0)||t(r,n,a,!0)}this.flexImages=function(){var r={selector:null,container:".item",object:"img",rowHeight:180,maxRows:0,truncate:0};if(arguments[0]&&"object"==typeof arguments[0])for(var n in arguments[0])Object.prototype.hasOwnProperty.call(arguments[0],n)&&(r[n]=arguments[0][n]);var a="object"==typeof r.selector?[r.selector]:document.querySelectorAll(r.selector);for(i=0;i<a.length;i++){var o=a[i],l=o.querySelectorAll(r.container),s=[],g=(new Date).getTime();if(l.length){for(r.margin=e(l[0],!0)-e(l[0],!1,!0),j=0;j<l.length;j++){var c=l[j],f=parseInt(c.getAttribute("data-w")),u=parseInt(c.getAttribute("data-h")),h=f*(r.rowHeight/u),m=c.querySelector(r.object);s.push([c,f,u,h,m,m.getAttribute("data-src")])}t(o,s,r),tempf=function(){t(o,s,r)},document.addEventListener?(window["flexImages_listener"+g]=tempf,window.removeEventListener("resize",window["flexImages_listener"+o.getAttribute("data-flex-t")]),window.addEventListener("resize",window["flexImages_listener"+g])):o.onresize=tempf,o.setAttribute("data-flex-t",g)}}}}();
 
     function escapeHTML(s){return s?s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):'';}
     function toTitleCase(s){ return s.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}); }
@@ -65,7 +65,6 @@
     }
 
     APIResponse = function(data, n, page, per_page, url){
-        cache[url] = data;
         var nav = '', html = '',
             rh = parseInt(n.getAttribute('data-row-height'))||o.row_height,
             mr = parseInt(n.getAttribute('data-max-rows'))||o.max_rows,
@@ -80,45 +79,41 @@
         if (tr == 'false') tr = 0; else if (tr == 'true') tr = 1;
         if (br == 'false') br = 0; else if (br == 'true') br = 1;
 
-        // pagination and branding
-        var is_paginated = data.totalHits > per_page && prev && next;
-        if (is_paginated || br) {
-            nav += '<div class="noselect '+o.class_name+'_nav">';
-            if (br) nav += '<div class="branding">Powered by <a href="http://pixabay.com/" target="'+target+'">Pixabay</a></div>';
-            if (is_paginated) {
-                if (page > 1) nav += '<b class="'+o.class_name+'_prev">'+prev+'&nbsp;</b>';
-                else nav += '<span>'+prev+'&nbsp;</span>';
-                if (page*per_page < data.totalHits) nav += '<b class="'+o.class_name+'_next">&nbsp; '+next+'</b>';
-                else nav += '<span>&nbsp; '+next+'</span>';
+        if (data != false) { // prefilled widget?
+            cache[url] = data;
+
+            // pagination and branding
+            var is_paginated = data.totalHits > per_page && prev && next;
+            if (is_paginated || br) {
+                nav += '<div class="noselect '+o.class_name+'_nav">';
+                if (br) nav += '<div class="branding">Powered by <a href="http://pixabay.com/" target="'+target+'">Pixabay</a></div>';
+                if (is_paginated) {
+                    if (page > 1) nav += '<b class="'+o.class_name+'_prev">'+prev+'&nbsp;</b>';
+                    else nav += '<span>'+prev+'&nbsp;</span>';
+                    if (page*per_page < data.totalHits) nav += '<b class="'+o.class_name+'_next">&nbsp; '+next+'</b>';
+                    else nav += '<span>&nbsp; '+next+'</span>';
+                }
+                nav += '</div>';
             }
-            nav += '</div>';
-        }
 
-        if (navpos == 'top') html += nav;
-        // flexImages markup
-        for (var i=0,hits=data.hits;i<hits.length;i++) {
-            var w = hits[i].previewWidth, h = hits[i].previewHeight, src = hits[i].previewURL;
-            if (rh > h-10) w = w*(180/(h+1)), h = 180, src = src.replace('_150', '__180');
-            html += '<div class="item" data-w="'+w+'" data-h="'+h+'"><a title="'+escapeHTML(toTitleCase(hits[i].tags))+'" href="'+hits[i].pageURL+'" target="'+target+'"><img src="http://pixabay.com/static/img/blank.gif" data-src="'+src+'"></a></div>';
-        }
-        if (navpos == 'bottom') html += nav;
+            if (navpos == 'top') html = nav;
+            // flexImages markup
+            for (var i=0,hits=data.hits;i<hits.length;i++) {
+                var w = hits[i].previewWidth, h = hits[i].previewHeight, src = hits[i].previewURL;
+                if (rh > h-10) w = w*(180/(h+1)), h = 180, src = src.replace('_150', '__180');
+                html += '<div class="item" data-w="'+w+'" data-h="'+h+'"><a title="'+escapeHTML(toTitleCase(hits[i].tags))+'" href="'+hits[i].pageURL+'" target="'+target+'"><img src="http://pixabay.com/static/img/blank.gif" data-src="'+src+'"></a></div>';
+            }
+            if (navpos == 'bottom') html += nav;
 
-        n.innerHTML = html;
+            n.innerHTML = html;
+        }
         if (n.className.indexOf('flex_grid')<0) n.className += ' flex_grid';
         new flexImages({selector: n, rowHeight: rh, maxRows: mr, truncate: tr});
-        n.setAttribute('data-attrstr', attrs_to_str(n));
     }
 
     function closest(el, selector) { // IE9+
         var match = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
         while (el) { if (match.bind(el)(selector)) return el; else el = el.parentElement; }
-    }
-
-    function attrs_to_str(n){
-        var s = '';
-        for (var i=0,attrs=n.attributes;i<attrs.length;i++)
-            if (attrs[i].name != 'data-attrstr') s += attrs[i].name+attrs[i].value;
-        return s;
     }
 
     if (document.addEventListener)
@@ -135,11 +130,19 @@
     else
         o.prev = '', o.next = '';
 
+    function attrs_to_str(n){
+        var s = '';
+        for (var i=0,attrs=n.attributes;i<attrs.length;i++)
+            if (attrs[i].name != 'data-attrstr' && attrs[i].name != 'data-prefilled') s += attrs[i].name+attrs[i].value;
+        return s;
+    }
+
     function init(){
         for (var i=0,widgets=document.querySelectorAll('.'+o.class_name);i<widgets.length;i++) {
             var n = widgets[i];
             // skip rendered widgets if not changed
             if (attrs_to_str(n) != n.getAttribute('data-attrstr')) {
+                n.setAttribute('data-attrstr', attrs_to_str(n));
                 var page = (parseInt(n.getAttribute('data-page'))||1),
                     per_page = (parseInt(n.getAttribute('data-per-page'))||o.per_page),
                     q = n.getAttribute('data-search')||'',
@@ -147,7 +150,8 @@
                 per_page = per_page > 100 ? 100 : per_page;
                 if (user) q = 'user:'+user+' '+q;
                 var url = 'http://pixabay.com/api/?username=PixabayWidget&key=2e318db2f775b21a12e5&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-image-type')||o.image_type)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editors-choice')||o.editors_choice)+'&per_page='+per_page+'&page='+page+'&q='+encodeURIComponent(q);
-                if (url in cache) APIResponse(cache[url], n, page, per_page, url);
+                if (n.getAttribute('data-prefilled')) { n.removeAttribute('data-prefilled'); APIResponse(false, n, page, per_page, url); }
+                else if (url in cache) APIResponse(cache[url], n, page, per_page, url);
                 else { var script = document.createElement('script'); script.src = url+'&callback='+callback_name(APIResponse, n, page, per_page, url); document.body.appendChild(script); }
             }
         }
