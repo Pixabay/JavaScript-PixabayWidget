@@ -87,7 +87,7 @@
         <p>
             The resulting widget shows a set of popular Pixabay images, matching the term "africa animals", and including navigation buttons with branding:
         </p>
-        <div style="margin:0 0 25px" class="pixabay_widget" data-search="africa animals" data-max-rows="3" data-row-height="120"></div>
+        <div style="margin:0 0 25px" class="pixabay_widget" data-search="africa animals" data-max-rows="3" data-row-height="120" data-per-page="25"></div>
 
         <p>
             The attribute <span class="inline-code">data-search</span> tells the widget what images to search for. When omitting this parameter, all Pixabay images are listed.
@@ -106,7 +106,7 @@
             <tr><td>data-editors-choice</td><td><i>false</i></td><td>Select images that have received an <a href="http://pixabay.com/editors_choice/">Editor's Choice</a> award. Accepted values: "true", "false".</td></tr>
             <tr><td>data-order</td><td>'popular'</td><td>How the results should be ordered. Accepted values: "popular", "latest".</td></tr>
             <tr><td>data-page</td><td>1</td><td>Returned image sets are paginated. Use this parameter to select the page number.</td></tr>
-            <tr><td>data-per-page</td><td>25</td><td>Maximum number of images per next/prev page. Values: 3-100.</td></tr>
+            <tr><td>data-per-page</td><td>20</td><td>Maximum number of images per next/prev page. Values: 3-100.</td></tr>
 
             <tr><td>data-row-height</td><td>170</td><td>Maximum height of a row in pixels. Values 30-180.</td></tr>
             <tr><td>data-max-rows</td><td>-</td><td>Maximum number of rows to display. Images exceeding this row are hidden.</td></tr>
@@ -139,7 +139,7 @@
         <em>safesearch</em>: false,
         <em>editors_choice</em>: false,
         <em>order</em>: <b>'popular'</b>,
-        <em>per_page</em>: 25,
+        <em>per_page</em>: 20,
         <em>row_height</em>: 170,
         <em>max_rows</em>: false,
         <em>truncate</em>: false,
@@ -170,7 +170,7 @@
         <p>
             If you like, you may download the script and host it on your own server(s).
             Alternatively, use the script URL from Pixabay - as shown in the example above.
-            Or you can make use of <a href="https://rawgit.com/">RawGit</a> to access the GitHub's repository via CDN (MaxCDN):
+            Or you can make use of <a href="https://rawgit.com/">RawGit</a> to access the GitHub repository via CDN (MaxCDN):
         </p>
         <pre>&lt;script <em>src</em>=<b>&quot;https://cdn.rawgit.com/Pixabay/JavaScript-PixabayWidget/master/pixabay-widget.min.js&quot;</b> <em>async defer</em>&gt;&lt;/script&gt;</pre>
 
