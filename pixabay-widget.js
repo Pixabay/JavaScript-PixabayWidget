@@ -162,5 +162,5 @@
 
     if (document.readyState!='loading') init();
     else if (document.addEventListener) document.addEventListener('DOMContentLoaded', init);
-    else document.attachEvent('onreadystatechange', function(){ if (document.readyState=='complete') { init(); } });
+    else document.attachEvent('onreadystatechange', function(){ if (document.readyState=='complete') init(); });
 }());
