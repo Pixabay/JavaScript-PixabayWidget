@@ -86,7 +86,7 @@
             var is_paginated = data.totalHits > per_page && prev && next;
             if (is_paginated || br) {
                 nav += '<div class="noselect '+o.class_name+'_nav">';
-                if (br) nav += '<div class="branding">Powered by <a href="http://pixabay.com/" target="'+target+'">Pixabay</a></div>';
+                if (br) nav += '<div class="branding">Powered by <a href="https://pixabay.com/" target="'+target+'">Pixabay</a></div>';
                 if (is_paginated) {
                     if (page > 1) nav += '<b class="'+o.class_name+'_prev">'+prev+'&nbsp;</b>';
                     else nav += '<span>'+prev+'&nbsp;</span>';
@@ -101,7 +101,7 @@
             for (var i=0,hits=data.hits;i<hits.length;i++) {
                 var w = hits[i].previewWidth, h = hits[i].previewHeight, src = hits[i].previewURL;
                 if (rh > h-10) w = w*(180/(h+1)), h = 180, src = src.replace('_150', '__180');
-                html += '<div class="item" data-w="'+w+'" data-h="'+h+'"><a title="'+escapeHTML(toTitleCase(hits[i].tags))+'" href="'+hits[i].pageURL+'" target="'+target+'"><img src="http://pixabay.com/static/img/blank.gif" data-src="'+src+'"></a></div>';
+                html += '<div class="item" data-w="'+w+'" data-h="'+h+'"><a title="'+escapeHTML(toTitleCase(hits[i].tags))+'" href="'+hits[i].pageURL+'" target="'+target+'"><img src="https://pixabay.com/static/img/blank.gif" data-src="'+src+'"></a></div>';
             }
             if (navpos == 'bottom') html += nav;
 
@@ -149,7 +149,7 @@
                     user = n.getAttribute('data-user')||'';
                 per_page = per_page > 100 ? 100 : per_page;
                 if (user) q = 'user:'+user+' '+q;
-                var url = 'http://pixabay.com/api/?username=PixabayWidget&key=2e318db2f775b21a12e5&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-image-type')||o.image_type)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editors-choice')||o.editors_choice)+'&per_page='+per_page+'&page='+page+'&q='+encodeURIComponent(q);
+                var url = 'https://pixabay.com/api/?username=PixabayWidget&key=2e318db2f775b21a12e5&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-image-type')||o.image_type)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editors-choice')||o.editors_choice)+'&per_page='+per_page+'&page='+page+'&q='+encodeURIComponent(q);
                 if (n.getAttribute('data-prefilled')) { n.removeAttribute('data-prefilled'); APIResponse(false, n, page, per_page, url); }
                 else if (url in cache) APIResponse(cache[url], n, page, per_page, url);
                 else { var script = document.createElement('script'); script.src = url+'&callback='+callback_name(APIResponse, n, page, per_page, url); document.body.appendChild(script); }
