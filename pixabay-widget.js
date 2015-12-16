@@ -1,5 +1,5 @@
 /*
-    Pixabay Image Gallery Widget v1.0.1
+    Pixabay Image Gallery Widget v1.0.2
     Copyright (c) 2014 Simon Steinberger / Pixabay
     GitHub: https://github.com/Pixabay/JavaScript-PixabayWidget
     License: http://www.opensource.org/licenses/mit-license.php

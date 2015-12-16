@@ -22,6 +22,10 @@ https://goodies.pixabay.com/javascript/pixabay-widget/demo.html
 
 ## Changelog
 
+### Version 1.0.2 - 2015/12/16
+
+* Updated Pixabay API calls and included flexImages plugin.
+
 ### Version 1.0.1 - 2015/07/01
 
 * Auto select HTTP or HTTPS for Pixabay API requests.
