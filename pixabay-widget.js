@@ -149,7 +149,7 @@
                     user = n.getAttribute('data-user')||'';
                 per_page = per_page > 100 ? 100 : per_page;
                 if (user) q = 'user:'+user+' '+q;
-                var url = (window.location.protocol == 'http:' ? 'http' : 'https') + '://pixabay.com/api/?username=WPPixabayWidget&key=fc0488d76c71e834afa6&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-image-type')||o.image_type)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editors-choice')||o.editors_choice)+'&per_page='+per_page+'&page='+page+'&q='+encodeURIComponent(q);
+                var url = (window.location.protocol == 'http:' ? 'http' : 'https') + '://pixabay.com/api/?key=920846-f166ae7378e8ef75465ff68ef&lang='+(n.getAttribute('data-lang')||o.lang)+'&order='+(n.getAttribute('data-order')||o.order)+'&image_type='+(n.getAttribute('data-image-type')||o.image_type)+'&safesearch='+(n.getAttribute('data-safesearch')||o.safesearch)+'&editors_choice='+(n.getAttribute('data-editors-choice')||o.editors_choice)+'&per_page='+per_page+'&page='+page+'&q='+encodeURIComponent(q);
                 if (n.getAttribute('data-prefilled')) { n.removeAttribute('data-prefilled'); APIResponse(false, n, page, per_page, url); }
                 else if (url in cache) APIResponse(cache[url], n, page, per_page, url);
                 else { var script = document.createElement('script'); script.src = url+'&callback='+callback_name(APIResponse, n, page, per_page, url); document.body.appendChild(script); }
