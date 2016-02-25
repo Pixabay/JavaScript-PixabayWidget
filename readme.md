@@ -22,6 +22,10 @@ https://goodies.pixabay.com/javascript/pixabay-widget/demo.html
 
 ## Changelog
 
+### Version 1.0.3 - 2016/02/25
+
+* Exclude bots from triggering the widget initialization.
+
 ### Version 1.0.2 - 2015/12/16
 
 * Updated Pixabay API calls and included flexImages plugin.

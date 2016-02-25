@@ -1,5 +1,5 @@
 /*
-    Pixabay Image Gallery Widget v1.0.2
+    Pixabay Image Gallery Widget v1.0.3
     Copyright (c) 2014 Simon Steinberger / Pixabay
     GitHub: https://github.com/Pixabay/JavaScript-PixabayWidget
     License: http://www.opensource.org/licenses/mit-license.php
@@ -160,7 +160,9 @@
     // public method: new initPixabayWidget();
     this.initPixabayWidget = init;
 
-    if (document.readyState!='loading') init();
-    else if (document.addEventListener) document.addEventListener('DOMContentLoaded', init);
-    else document.attachEvent('onreadystatechange', function(){ if (document.readyState=='complete') init(); });
+    if (!/bot|crawl|spider/i.test(navigator.userAgent)) {
+        if (document.readyState!='loading') init();
+        else if (document.addEventListener) document.addEventListener('DOMContentLoaded', init);
+        else document.attachEvent('onreadystatechange', function(){ if (document.readyState=='complete') init(); });
+    }
 }());
