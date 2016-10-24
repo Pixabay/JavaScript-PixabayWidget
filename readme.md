@@ -22,6 +22,10 @@ https://goodies.pixabay.com/javascript/pixabay-widget/demo.html
 
 ## Changelog
 
+### Version 1.0.4 - 2016/02/25
+
+* Registering an own Pixabay API key is now a requirement; due to abuse of the hard coded key in previous versions.
+
 ### Version 1.0.3 - 2016/02/25
 
 * Exclude bots from triggering the widget initialization.

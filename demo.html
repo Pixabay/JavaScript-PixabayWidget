@@ -75,9 +75,11 @@
 
         <h3>How to use</h3>
         <p>
-            First, include the JavaScript anywhere on the page, but preferably before the closing <span class="inline-code">&lt;/body&gt;</span> tag.
+            First, <a href="https://pixabay.com/accounts/register/" target="_blank">sign up on Pixabay</a> and get your API key, which you'll find on the <a href="https://pixabay.com/api/docs/" target="_blank">API documentation page</a>. Signing up is free, of course.
+            Then, include the JavaScript including your API key anywhere on the page, but preferably before the closing <span class="inline-code">&lt;/body&gt;</span> tag.
         </p>
-        <pre>&lt;script <em>src</em>=<b>&quot;https://goodies.pixabay.com/javascript/pixabay-widget/pixabay-widget.min.js&quot;</b> <em>async defer</em>&gt;&lt;/script&gt;</pre>
+        <pre>&lt;script&gt;var pixabayWidget = { 'key': 'YOUR_PIXABAY_API_KEY' }&lt;/script&gt;
+&lt;script <em>src</em>=<b>&quot;https://goodies.pixabay.com/javascript/pixabay-widget/pixabay-widget.min.js&quot;</b> <em>async defer</em>&gt;&lt;/script&gt;</pre>
 
         <p>
             The script automatically detects all widget containers and renders the image galleries. A widget container looks like this:
@@ -199,7 +201,7 @@
     </div>
 
     <div id="fb-root"></div>
-    <script>var pixabayWidget = { target: '_blank' };</script>
+    <script>var pixabayWidget = { key: "920846-f166ae7378e8ef75465ff68ef", target: '_blank' };</script>
     <script src="pixabay-widget.js" async defer></script>
     <script>
         if (~window.location.href.indexOf('http')) {
